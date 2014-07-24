@@ -1,0 +1,19 @@
+<% if signed_in? %>
+
+  <li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %></li>
+
+<% else %>
+
+  <li><%= link_to "Log in", new_session_url %></li>
+  <li><%= link_to "Sign up", new_user_url %></li>
+
+<% end %>
+
+<% if flash[:errors] %>
+
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <%= flash[:errors].join("<br>") %>
+  </div>
+  
+<% end %>

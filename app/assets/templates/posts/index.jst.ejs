@@ -1,0 +1,15 @@
+<h3>Post Index</h3>
+
+<ul>
+	<% posts.each(function(post) { %>
+		<li>
+			<a href="#/posts/<%= post.get("id") %>">
+				<%= post.get('title') %>
+			</a>
+		</li>
+	<% }) %>
+</ul>
+
+<button id='refresh'>Refresh</button>
+
+<a href='#/posts/new'>New Post</a>
