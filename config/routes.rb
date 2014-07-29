@@ -5,8 +5,7 @@ StackClone::Application.routes.draw do
   resource :session
   
   namespace :api, defaults: {format: :json} do
-    resources :posts, only: [:create, :update, :destroy]
+    resources :posts
+    resources :answers
   end
-  
-  resources :posts, except: [:create, :update, :destroy]
 end

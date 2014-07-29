@@ -1,5 +1,6 @@
 window.StackClone.Collections.Posts = Backbone.Collection.extend({
 	url: '/api/posts',
+	
 	model: StackClone.Models.Post,
 	
 	getOrFetch: function (id) {
@@ -7,14 +8,14 @@ window.StackClone.Collections.Posts = Backbone.Collection.extend({
 		var posts = this;
 		
 		if (model = this.get(id)) {
-			return model;
+			model.fetch();
 		} else {
 			model = new StackClone.Models.Post({id: id});
 			model.fetch({
 				success: function () { posts.add(model) }
 			});
-			return model;
 		}
+		return model;
 	}
 });
 

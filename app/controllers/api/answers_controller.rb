@@ -3,6 +3,7 @@ module Api
 
     def create
       @answer = Answer.new(answer_params)
+      @answer.user_id = current_user.id
 
       if @answer.save
         render json: @answer
@@ -15,6 +16,11 @@ module Api
       @answer = Answer.find(params[:id])
       @answer.destroy
       render json: {}
+    end
+    
+    def show
+      @answer = Answer.find(params[:id])
+      render json: @answer, include: [:comments]
     end
 
     def update
@@ -30,7 +36,7 @@ module Api
     private
 
     def answer_params
-      params.require(:answer).permit(:body, :post_id, :user_id)
+      params.require(:answer).permit(:body, :post_id)
     end
   end
 end

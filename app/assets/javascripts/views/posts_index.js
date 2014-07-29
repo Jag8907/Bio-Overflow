@@ -9,7 +9,7 @@ window.StackClone.Views.PostsIndex = Backbone.View.extend({
 		this.listenTo(
 			this.collection,
 			'sync add',
-			this.render.bind(this)
+			this.render
 		);
 	},
 	

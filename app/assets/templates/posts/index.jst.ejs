@@ -3,8 +3,8 @@
 <ul>
 	<% posts.each(function(post) { %>
 		<li>
-			<a href="#/posts/<%= post.get("id") %>">
-				<%= post.get('title') %>
+			<a href="#/post/<%= post.get("id") %>">
+				<%= post.escape('title') %>
 			</a>
 		</li>
 	<% }) %>

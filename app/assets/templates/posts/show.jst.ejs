@@ -1,11 +1,18 @@
-<h3><%= post.get('title') %></h3>
+<h3><%= post.escape('title') %></h3>
 
-<!--
 <ul>
-	<% comments.each(function (comment) { %>
-		<li><%= comment.get('content') %></li>
-	<% }) %>
+<% answers.forEach (function (answer) { %>
+	<li><%= answer.escape('body') %></li>
+<% }); %>
 </ul>
--->
+
+<form>
+	<label for='answer_body'>Answer</label>
+	<input type='text' name='answer[body]' id='answer_body'>
+	
+	<input type='hidden' name='answer[post_id]' id='answer_post_id' value='<%= post.id %>'>
+	
+	<input type='submit'>
+</form>
 
 <a href='#/'>Back to Index</a>
