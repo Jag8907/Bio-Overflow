@@ -5,7 +5,9 @@ StackClone::Application.routes.draw do
   resource :session
   
   namespace :api, defaults: {format: :json} do
-    resources :posts
-    resources :answers
+    resources :posts do
+      resources :answers
+    end
+    resources :comments
   end
 end

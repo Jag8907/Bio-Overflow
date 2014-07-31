@@ -20,7 +20,7 @@ module Api
     
     def show
       @comment = Comment.find(params[:id])
-      render json: @comment, include: [:comments]
+      render json: @comment
     end
 
     def update
@@ -36,7 +36,7 @@ module Api
     private
 
     def comment_params
-      params.require(:comment).permit(:body, :commentable)
+      params.require(:comment).permit(:body, :commentable_id, :commentable_type)
     end
   end
 end

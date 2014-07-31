@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   has_many :board_memberships
   has_many :comments, foreign_key: :commenter_id, class_name: Comment
   has_many :member_boards, through: :board_memberships, source: :board
-  has_many :comments, as: :commentable
 
   attr_reader :password
   after_initialize :ensure_session_token

@@ -1,4 +1,4 @@
-window.StackClone.Models.Post = Backbone.Model.extend({
+window.StackClone.Models.Post = Backbone.ModelsComment.extend({
 	urlRoot: '/api/posts',
 	
 	answers: function () {

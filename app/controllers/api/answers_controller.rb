@@ -3,7 +3,13 @@ module Api
 
     def create
       @answer = Answer.new(answer_params)
-      @answer.user_id = current_user.id
+      if current_user
+        @answer.user_id = current_user.id
+        @answer.username = current_user.username
+      else
+        @answer.user_id = nil
+        @answer.username = 'Anonymous'
+      end
 
       if @answer.save
         render json: @answer

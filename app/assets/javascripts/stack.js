@@ -9,12 +9,32 @@ window.StackClone = {
 	}
 };
 
+Backbone.ModelsComment = Backbone.Model.extend({
+	comments: function () {
+	    if(!this._comments) {
+	      this._comments = new StackClone.Collections.Comments([], { commentable: this });
+	    }
+	    return this._comments;
+	},
+	
+	parse: function(data) {
+		if (data.comments){
+			this.comments().set(data.comments, {parse: true});
+			delete data.comments;
+		}
+		return data;
+	}
+});
+
 // Backbone.CompositeView = Backbone.View.extend({
 // 	subviews: {".comment-new": [newCommentView], ".comments": [comment1View, comment2View]}
 //
 // 	addSubview: function (selector, view) {
 // 		var selectorSubviews = this.subviews()[selector] || (this.subviews()[selector] = []);
 // 		selectorSubviews.push(view);
+//
+// 		var $selectorEl = this.$(selector);
+// 		$selector.append(subview.$el);
 // 	},
 //
 // 	renderSubviews: function (){

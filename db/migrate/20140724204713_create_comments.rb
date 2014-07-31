@@ -10,3 +10,7 @@ class CreateComments < ActiveRecord::Migration
     add_index :comments, :commenter_id
   end
 end
+
+
+# t.integer :imageable_id, null: false
+# t.string  :imageable_type, null: false

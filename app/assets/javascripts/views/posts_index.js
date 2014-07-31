@@ -11,6 +11,7 @@ window.StackClone.Views.PostsIndex = Backbone.View.extend({
 			'sync add',
 			this.render
 		);
+		$('body').css('background-color', 'rgb(255, 255, 255)')
 	},
 	
 	refresh: function () {
@@ -22,6 +23,7 @@ window.StackClone.Views.PostsIndex = Backbone.View.extend({
 			posts: this.collection
 		});
 		this.$el.html(renderedContent);
+		
 		return this;
 	}
 });

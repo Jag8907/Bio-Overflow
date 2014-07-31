@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap
 //= require jquery.serializeJSON
 //= require jquery_ujs
 //= require underscore
