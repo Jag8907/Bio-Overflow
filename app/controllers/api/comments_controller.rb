@@ -3,7 +3,11 @@ module Api
 
     def create
       @comment = Comment.new(comment_params)
-      @comment.commenter_id = current_user.id
+      if current_user
+        @comment.commenter_id = current_user.id
+      else
+        @comment.commenter_id = 1
+      end
 
       if @comment.save
         render json: @comment

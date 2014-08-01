@@ -15,7 +15,8 @@ window.StackClone.Views.PostsShow = Backbone.View.extend({
   		event.preventDefault();
   		var params = $(event.currentTarget).serializeJSON()['comment'];
   		var newComment = new StackClone.Models.Comment(params, {commentable: this.model});
-  		if newComment.save()
+		debugger;
+  		newComment.save()
   		this.model.comments().add(newComment)
   		this.render()
   	},

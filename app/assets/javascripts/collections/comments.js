@@ -7,5 +7,3 @@ window.StackClone.Collections.Comments = Backbone.Collection.extend({
 		this.commentable = options.commentable;
 	}
 });
-
-window.StackClone.Collections.comments = new StackClone.Collections.Comments();
