@@ -1,19 +1,25 @@
-<% if signed_in? %>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container container-fluid">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">Stack Overflow Clone</a>
+  </div>
 
-  <li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %></li>
-
-<% else %>
-
-  <li><%= link_to "Log in", new_session_url %></li>
-  <li><%= link_to "Sign up", new_user_url %></li>
-
-<% end %>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+    <% if signed_in? %>
+      <li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %></li>
+    <% else %>
+      <li><%= link_to "Log in", new_session_url %></li>
+      <li><%= link_to "Sign up", new_user_url %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+</nav>
 
 <% if flash[:errors] %>
-
-  <div class="alert alert-warning alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    <%= flash[:errors].join("<br>") %>
-  </div>
-  
+<div class="alert alert-warning alert-dismissible" role="alert">
+   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+<%= flash[:errors].join("<br>") %>
+</div>
 <% end %>

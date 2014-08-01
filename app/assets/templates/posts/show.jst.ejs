@@ -1,50 +1,63 @@
-<h2>Title: <%= post.escape('title') %></h2>
+<h2 class='title'><%= post.escape('title') %><p>Asked by: <%= post.escape('author')%></p></h2>
 
-<h4><%= post.escape('body') %></h4>
+<div class='post-body'>
+<p><%= post.escape('body') %></p>
+</div>
 
-<h4>Comments</h4>
-
-<ol>
-	<% comments.forEach (function (comment) { %>
-	<li> 
-		<%= comment.escape('body') %>
-	</li>
-	<% }); %>
-</ol>
-
-<h4>Answers</h4>
-<ol>
-	<% answers.forEach (function (answer) { %>
-		<li>
-			<%= answer.escape('username') %>'s answer is: 
-			<%= answer.escape('body') %>
+<% if (comments.length !== 0){ %>
+	<h4>Comments</h4>
+	<ol>
+		<% comments.forEach (function (comment) { %>
+		<li> 
+			<%= comment.escape('body') %>
 		</li>
-		<form id='answerComment'>
-			<label for='comment_body'>Comment on answer</label>
-			<input type='text' name='comment[body]' id='comment_body'>
+		<% }); %>
+	</ol>
+<% }; %>
 
-			<input type='hidden' name='comment[commentable_id]' id='comment_commentable_id' value='<%= answer.id %>'>
+<% if (answers.length !== 0){ %>
+	<h4>Answers</h4>
+	<ol>
+		<% answers.forEach (function (answer) { %>
+			<li>
+				<%= answer.escape('username') %>'s answer is: 
+				<%= answer.escape('body') %>
+			</li>
+			<% if (answer.comments().length !== 0){ %>
+				<p>Comments on this answer</p>
+				<% answer.comments().each(function(comment){ %>
+					<%= comment.escape('body') %>
+				<% }); %>
+				<form id='answerComment'>
+					<label for='comment_body'>Comment on answer</label>
+					<input type='text' name='comment[body]' id='comment_body'>
 
-			<input type='hidden' name='comment[commentable_type]' id='comment_commentable_type' value='Answer'>
+					<input type='hidden' name='comment[commentable_id]' id='comment_commentable_id' value='<%= answer.id %>'>
 
-			<input type='submit'>
-		</form>
+					<input type='hidden' name='comment[commentable_type]' id='comment_commentable_type' value='Answer'>
+
+					<input type='submit'>
+				</form>
+			<% }; %>
 		
-	<% }); %>
-</ol>
+		<% }); %>
+	</ol>
+<% }; %>
 
 <form id='answer'>
-	<label for='answer_body'>Answer the post</label>
-	<input type='text' name='answer[body]' id='answer_body'>
+	<label for='answer_body'>Answer the question</label>
 
 	<input type='hidden' name='answer[post_id]' id='answer_post_id' value='<%= post.id %>'>
 
 	<input type='submit'>
 </form>
 
+<label for='answer'>
+<textarea rows="4" cols="30" name="answer[body]" form="answer" id='answer_body'>
+Enter text here...</textarea><br>
+
 <form id='comment'>
-	<label for='comment_body'>Comment on post</label>
-	<input type='text' name='comment[body]' id='comment_body'>
+	<label for='comment_body'>Comment on the question</label>
 
 	<input type='hidden' name='comment[commentable_id]' id='comment_commentable_id' value='<%= post.id %>'>
 
@@ -52,6 +65,10 @@
 
 	<input type='submit'>
 </form>
+
+<label for='comment'>
+<textarea rows="4" cols="30" name="comment[body]" form="comment" id='comment_body'>
+Enter text here...</textarea><br>
 
 <a href='#/'>Back to Index</a>
 

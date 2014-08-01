@@ -7,7 +7,7 @@ module Api
         @answer.user_id = current_user.id
         @answer.username = current_user.username
       else
-        @answer.user_id = nil
+        @answer.user_id = 1
         @answer.username = 'Anonymous'
       end
 

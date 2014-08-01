@@ -3,7 +3,13 @@ module Api
 
     def create
       @post = Post.new(post_params)
-      @post.user_id = current_user.id
+      if current_user
+        @post.user_id = current_user.id
+        @post.author = current_user.username
+      else
+        @post.user_id = 1
+        @post.author = "Anonymous"
+      end
       
       if @post.save
         render json: @post
@@ -35,7 +41,7 @@ module Api
     private
 
     def post_params
-      params.require(:post).permit(:title, :body, :user_id)
+      params.require(:post).permit(:title, :body, :user_id, :author)
     end
   end
 end

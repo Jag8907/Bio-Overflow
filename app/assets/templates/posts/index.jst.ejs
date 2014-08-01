@@ -1,16 +1,16 @@
-<h3>Post Index</h3>
+<h4 class='posts'>Popular Questions</h4>
 
-<ul>
+<ul class='posts'>
 	<% posts.each(function(post) { %>
 		<li>
 			<a href="#/post/<%= post.get("id") %>">
-				<%= post.escape('title') %>
+				<%= post.escape('title') %><br>
+				Written by: <%= post.escape('author')%>
 			</a>
-			<button id='destroy'>Destroy</button>
 		</li>
 	<% }) %>
 </ul>
 
-<button id='refresh'>Refresh</button>
+<button id='refresh'>Refresh</button><br>
 
-<a href='#/posts/new'>New Post</a>
+<a href='#/posts/new'>Create a new post</a>

@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140724210330) do
     t.string   "title",      null: false
     t.string   "body",       null: false
     t.integer  "user_id",    null: false
+    t.string   "author",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -6,11 +6,7 @@ window.StackClone.Views.PostsIndex = Backbone.View.extend({
 	},
 	
 	initialize: function (options) {
-		this.listenTo(
-			this.collection,
-			'sync add',
-			this.render
-		);
+		this.listenTo(this.collection, 'sync add', this.render);
 		$('body').css('background-color', 'rgb(255, 255, 255)')
 	},
 	

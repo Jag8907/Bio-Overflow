@@ -1,12 +1,14 @@
 <h1>New Post</h1>
-<form>
+<form id='post_form'>
 	<label for='post_title'>Title</label>
 	<input type='text' name='post[title]' id='post_title'>
-	
-	<label for='post_body'>Body</label>
-	<input type='textarea' name='post[body]' id='post_body'>
+	<br>
 	
 	<input type='submit'>
 </form>
+
+<label for='post_body'>
+<textarea rows="4" cols="50" name="post[body]" form="post_form" id='post_body'>
+Enter text here...</textarea><br>
 
 <a href='#/'>Back to Index</a>

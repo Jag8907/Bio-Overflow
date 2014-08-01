@@ -1,0 +1,269 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * answered below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ $brand-primary  : #598FAD;
+
+ @import "bootstrap";
+ @import "font-awesome";
+
+ // for fixed top navbar
+ 
+ ul { list-style: none; }
+ 
+ body {
+   padding-top: 60px;
+ }
+ 
+ .title {
+   text-align: center;
+ }
+ 
+ .title > p {
+   font-size: 11px;
+ }
+ 
+ .post-body > p {
+   font-size: 14px;
+ }
+ 
+ .post-body {
+   width: 600px;
+   height: 200px;
+   border: 1px solid gray;
+   margin: 0px;
+   margin-left: 20px;
+   margin-right: 600px;
+   background-color: #b0c4de;
+ }
+
+ .panel-spaced {
+   margin-left: 10px;
+ }
+
+ .well-unspaced {
+   margin-top: 0px;
+ }
+
+ .close-lg {
+   font-size: 30px;
+ }
+
+ .add-menu {
+   width: 300px;
+   max-height: 150px;
+   .header {
+     line-height:30px;
+     text-align: center;
+     color: #939393;
+     display: block;
+     height: 30px;
+   }
+   li {
+     a {
+       white-space: normal;
+       .add-item-description {
+         display: block;
+         clear: both;
+         color: #939393;
+         font-size: 12px;
+         margin-top: 4px;
+       }
+       &:hover, &:hover .add-item-description {
+         background-color: #318ec4;
+         color: #fff;
+       }
+     }
+   }
+ }
+
+ .posts, .posts-index-title {
+   margin-left: 50px;
+   padding: 0;
+ }
+
+ .posts > li, .posts > li a {
+   box-sizing: content-box;
+ }
+ .posts > li {
+   width: 25%;
+   float: left;
+   position: relative;
+   a {
+     height: 45px;
+     margin: 0 16px 16px 0;
+     color: #f6f6f6;
+     background-color: #23719F;
+     font-size: 14px;
+     padding: 8px 12px;
+     display: block;
+     text-decoration: none;
+     border-radius: 3px;
+     font-weight: 700;
+     box-sizing: normal;
+     position: relative;
+     &:hover .shadow {
+       background-color: rgba(0,0,0,0.25);
+     }
+   }
+   .shadow {
+     background-color: rgba(0, 0, 0, 0.15);
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     display: block;
+   }
+   .details {
+     color: #f6f6f6;
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     display: block;
+     padding: 8px 10px;
+   }
+ }
+
+ ul {
+   answer-style: none;
+ }
+
+ .show-post-header {
+   color: #f6f6f6;
+   margin-left: 20px;
+ }
+
+ .answers-window {
+   position: absolute;
+   bottom: 0;
+   top: 100px;
+   left: 0;
+   right: 0;
+   white-space: nowrap;
+   overflow-x: auto;
+   padding-left: 10px;
+   padding-bottom: 10px;
+   margin-bottom: 10px;
+   overflow-y: hidden;
+   > div * {
+     white-space: normal;
+   }
+   &::-webkit-scrollbar {
+     border-radius: 12px;
+     height: 12px;
+     width: 12px;
+   }
+
+   &::-webkit-scrollbar-button {
+     display: block;
+     width: 5px;
+     height: 5px;
+   }
+   &::-webkit-scrollbar-track-piece {
+     background: rgba(0,0,0,.15);
+     border-radius: 12px;
+   }
+
+   &::-webkit-scrollbar-thumb {
+     background-color: rgba(255,255,255,.4);
+     border-radius: 12px;
+   }
+ }
+
+ #answers, #answer-form, .answer-display {
+   display: inline-block;
+   vertical-align: top;
+ }
+
+ #answers {
+   height: 100%;
+ }
+
+ .answer-display {
+   background-color: #e3e3e3;
+   width: 260px;
+   margin: 0 5px;
+   border-radius: 3px;
+   max-height: 100%;
+   overflow: scroll;
+   padding: 4px 3px 3px;
+ }
+
+ .answer-comments {
+   padding: 4px 4px 1px;
+   overflow-x: hidden;
+   overflow-y: auto;
+ }
+
+ .answer-comments::-webkit-scrollbar {
+   border-radius: 10px;
+   width: 8px;
+ }
+
+ .answer-comments::-webkit-scrollbar-track {
+   background-color: #d0d0d0;
+   border-radius: 10px;
+ }
+
+ .answer-comments::-webkit-scrollbar-thumb {
+   background-color: #999;
+   border-radius: 10px;
+ }
+
+ .answer-heading {
+   cursor: grab;
+   cursor: -webkit-grab;
+   font-size: 15px;
+   padding: 3px 26px 2px 6px;
+   min-height: 19px;
+   h4 {
+     line-height: 18px;
+     word-wrap: break-word;
+     text-overflow: ellipsis;
+     overflow: hidden;
+     margin: 0;
+     min-height: 19px;
+   }
+ }
+
+ .comment {
+   border-radius: 3px;
+   background-color: white;
+   border-bottom: 1px solid #ccc;
+   margin-bottom: 5px;
+   padding: 6px 8px 4px;
+   cursor: pointer;
+ }
+
+ .comment:hover {
+   background-color: #f0f0f0;
+   border-bottom-color: #c2c2c2;
+ }
+
+ .add-comment {
+   display: block;
+   margin: 2px -3px -3px;
+   padding: 7px 10px;
+   color: #939393;
+   border-bottom-left-radius: 3px;
+   border-bottom-right-radius: 3px;
+   &:hover {
+    background-color: #c3c3c3;
+    color: #111;
+   }
+ }
+ 

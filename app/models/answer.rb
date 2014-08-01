@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  validates :body, :post_id, presence: true
+  validates :body, :post_id, :user_id, presence: true
 
   belongs_to :post
   belongs_to :user
