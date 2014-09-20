@@ -8,7 +8,7 @@ class Board < ActiveRecord::Base
   has_many :comments, dependent: :destroy, as: :commentable
 
   def is_member?(u)
-    return true if u.id == ownder.id
+    return true if u.id == owner.id
     board_memberships.where(user_id: u.id).exists?
   end
 end

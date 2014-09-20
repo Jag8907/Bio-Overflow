@@ -11,15 +11,9 @@ window.StackClone.Views.PostsShow = Backbone.View.extend({
 		this.listenTo(this.model, 'sync add remove', this.render);
 	 },
 	 
-  	submitComment: function (event) {
-  		event.preventDefault();
-  		var params = $(event.currentTarget).serializeJSON()['comment'];
-  		var newComment = new StackClone.Models.Comment(params, {commentable: this.model});
-		debugger;
-  		newComment.save()
-  		this.model.comments().add(newComment)
-  		this.render()
-  	},
+ 	refresh: function () {
+ 		this.collection.fetch();
+ 	},
 	 
 	// how do I pull the answer id from the page so i can connect the comment to it?
  	submitAnswerComment: function (event) {
@@ -41,12 +35,22 @@ window.StackClone.Views.PostsShow = Backbone.View.extend({
 		event.preventDefault();
 		var params = $(event.currentTarget).serializeJSON()['answer'];
 		var newAnswer = new StackClone.Models.Answer(params, {post: this.model});
-		newAnswer.save()
 		this.model.answers().add(newAnswer)
+		newAnswer.save()
 		this.render()
 	},
 	
+  	submitComment: function (event) {
+  		event.preventDefault();
+  		var params = $(event.currentTarget).serializeJSON()['comment'];
+  		var newComment = new StackClone.Models.Comment(params, {commentable: this.model});
+		this.model.comments().add(newComment)
+  		newComment.save()
+  		this.render()
+  	},
+	
 	render: function () {
+		debugger;
 		var renderedContent = this.template({
 			post: this.model,
 			answers: this.model.answers(),
